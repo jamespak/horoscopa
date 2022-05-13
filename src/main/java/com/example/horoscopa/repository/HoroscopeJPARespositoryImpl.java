@@ -4,13 +4,14 @@ import com.example.horoscopa.entities.HoroscopeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Primary
 @Repository
-public class HoroscopeRepositoryImpl implements HoroscopeRepository{
+public class HoroscopeJPARespositoryImpl implements HoroscopeRepository{
+
+    @Autowired
+    private HoroscopeRepository repo;
 
     @Override
     public <S extends HoroscopeEntity> S save(S entity) {
@@ -23,13 +24,15 @@ public class HoroscopeRepositoryImpl implements HoroscopeRepository{
     }
 
     @Override
-    public Optional<HoroscopeEntity> findById(Long aLong) {
-        return Optional.empty();
+    public Optional<HoroscopeEntity> findById(Long id)
+    {
+        return repo.findById(id);
     }
 
     @Override
-    public boolean existsById(Long aLong) {
-        return false;
+    public boolean existsById(Long id)
+    {
+        return repo.existsById(id);
     }
 
     @Override
