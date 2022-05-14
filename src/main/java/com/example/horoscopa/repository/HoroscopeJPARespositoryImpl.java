@@ -14,8 +14,9 @@ public class HoroscopeJPARespositoryImpl implements HoroscopeRepository{
     private HoroscopeRepository repo;
 
     @Override
-    public <S extends HoroscopeEntity> S save(S entity) {
-        return null;
+    public <S extends HoroscopeEntity> S save(S entity)
+    {
+        return repo.save(entity);
     }
 
     @Override

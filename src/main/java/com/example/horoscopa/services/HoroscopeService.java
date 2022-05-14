@@ -4,6 +4,7 @@ import com.example.horoscopa.entities.HoroscopeEntity;
 import com.example.horoscopa.repository.HoroscopeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Optional;
 
@@ -19,18 +20,18 @@ public class HoroscopeService {
 
     public Optional<HoroscopeEntity> getHoroscope(Long Id)
     {
-        Optional<HoroscopeEntity> response = repo.findById(Id);
-        //return repo.findById(Id);
-        return response;
+        return repo.findById(Id);
 
     }
 
     public Boolean exists(Long Id)
     {
-        Boolean exist = repo.existsById(Id);
-        //return repo.findById(Id);
-        return exist;
+        return repo.existsById(Id);
+    }
 
+    public HoroscopeEntity save(HoroscopeEntity horoscope)
+    {
+        return repo.save(horoscope);
     }
 
 }
